@@ -1,20 +1,13 @@
 angular.module('starter.controllers', ['ionic', 'ngCordova', 'firebase'])
 
-.controller('AppCtrl', function($ionicNavBarDelegate, $firebase, $scope, $ionicModal, $timeout, $location, $ionicPopup, $cordovaCamera, $ionicSideMenuDelegate, $firebaseArray, $firebaseObject, isLogin, $ionicBackdrop, $state) {
+.controller('AppCtrl', function($window, $ionicNavBarDelegate, $firebase, $scope, $ionicModal, $timeout, $location, $ionicPopup, $cordovaCamera, $ionicSideMenuDelegate, $firebaseArray, $firebaseObject, isLogin, $ionicBackdrop, $state) {
     // Form data for the login modal
 
 
     $ionicNavBarDelegate.showBackButton(true);
     $ionicSideMenuDelegate.canDragContent(false);
 
-
-    // $scope.$on('$ionicView.enter', function() {
-    //     $state.reload();
-    //     console.log("Enter");
-    // });
-    // $scope.$on('$ionicView.leave', function() {
-    //     console.log("Leave");
-    // });
+    $state.reload();
 
     $scope.loginData = {};
     $scope.signupData = {};

@@ -30,7 +30,10 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'firebase'])
                     });
                     confirmPopup.then(function(res) {
                         if (res) {
+                        	$ionicBackdrop.release();
                             $location.path('/app/meesh_photo_edit');
+                            
+
                         } else {
                             //if not then change this to false
                             var refThree = new Firebase('https://burning-heat-294.firebaseio.com/users/' + isLogin.getFireBaseId());
@@ -39,6 +42,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'firebase'])
                                 console.log("2 here");
                                 user.isInvited = false;
                                 user.$save();
+                                $ionicBackdrop.release();
                             });
                         }
                         $ionicBackdrop.release();
@@ -101,7 +105,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'firebase'])
                     template: error
                 });
                 alertPopup.then(function(res) {
-
+					$ionicBackdrop.release();
                 });
 
             } else {
@@ -132,6 +136,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'firebase'])
                         template: 'Welcome ' + authData.password.email
                     });
                     alertPopup.then(function(res) {
+                    	$ionicBackdrop.release();
                         $scope.modal.hide();
 
                     });
@@ -389,18 +394,19 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'firebase'])
     }
 })
 
-.controller('PhotoEditCtrl', function($state, $ionicPopup, $scope, $ionicSideMenuDelegate, $window, firstTime, $location, $state, isLogin, $firebaseArray, $firebaseObject, $ionicNavBarDelegate, $ionicScrollDelegate) {
+.controller('PhotoEditCtrl', function($state, $ionicPopup, $scope, $ionicSideMenuDelegate, $window, firstTime, $location, $state, isLogin, $firebaseArray, $firebaseObject, $ionicNavBarDelegate, $ionicScrollDelegate, $ionicBackdrop) {
 
 
-        console.log("Photo edit ctrl");
+        console.log("I got invited to here");
 
+		$ionicBackdrop.release();
+        //$state.reload();
 
-        $state.reload();
-
-        // if (firstTime.getIsFirstTime() == true) {
-        //     firstTime.setIsFirstTimeToFalse();
-        //     $state.reload();
-        // }
+//        if (firstTime.getIsFirstTime() == true) {
+//             firstTime.setIsFirstTimeToFalse();
+//             $state.reload();
+//         }
+         
 
         $scope.brightnessValue = 10;
         $scope.decreaseBrightness = -10;
