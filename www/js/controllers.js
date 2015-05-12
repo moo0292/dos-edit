@@ -23,7 +23,9 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'firebase'])
         if ($scope.login == true) {
             $scope.datas = new Firebase('https://burning-heat-294.firebaseio.com/users/' + isLogin.getFireBaseId());
             $scope.datas.on('value', function(childSnapshot) {
+                $ionicBackdrop.release();
                 if (childSnapshot.val().isInvited == true) {
+                    $ionicBackdrop.release();
                     var confirmPopup = $ionicPopup.confirm({
                         title: 'Someone wants to edit photo with you!',
                         template: 'Click accept to edit the photo!'
