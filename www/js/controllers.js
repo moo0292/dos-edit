@@ -30,7 +30,6 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'firebase'])
                     });
                     confirmPopup.then(function(res) {
                         if (res) {
-                        	$ionicBackdrop.release();
                             $location.path('/app/meesh_photo_edit');
                             
 
@@ -42,10 +41,8 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'firebase'])
                                 console.log("2 here");
                                 user.isInvited = false;
                                 user.$save();
-                                $ionicBackdrop.release();
                             });
                         }
-                        $ionicBackdrop.release();
                     })
                 }
             });
@@ -105,7 +102,6 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'firebase'])
                     template: error
                 });
                 alertPopup.then(function(res) {
-					$ionicBackdrop.release();
                 });
 
             } else {
@@ -136,7 +132,6 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'firebase'])
                         template: 'Welcome ' + authData.password.email
                     });
                     alertPopup.then(function(res) {
-                    	$ionicBackdrop.release();
                         $scope.modal.hide();
 
                     });
@@ -400,7 +395,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'firebase'])
         console.log("I got invited to here");
 
 		$ionicBackdrop.release();
-        //$state.reload();
+        $state.reload();
 
 //        if (firstTime.getIsFirstTime() == true) {
 //             firstTime.setIsFirstTimeToFalse();
