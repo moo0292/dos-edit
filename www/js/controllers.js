@@ -30,12 +30,13 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'firebase'])
                     });
                     confirmPopup.then(function(res) {
                         if (res) {
+                            $ionicBackdrop.release();
                             $location.path('/app/meesh_photo_edit');
-                            
 
                         } else {
                             //if not then change this to false
                             var refThree = new Firebase('https://burning-heat-294.firebaseio.com/users/' + isLogin.getFireBaseId());
+                            $ionicBackdrop.release();
                             $scope.usersel = $firebaseObject(refThree);
                             $scope.usersel.$loaded().then(function(user) {
                                 console.log("2 here");
@@ -43,6 +44,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'firebase'])
                                 user.$save();
                             });
                         }
+                        
                     })
                 }
             });
@@ -66,7 +68,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova', 'firebase'])
     // Triggered in the login modal to close it
     $scope.closeLogin = function() {
         $scope.modal.hide();
-
+        $ionicBackdrop.release();
     };
 
     // Open the login modal
